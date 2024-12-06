@@ -1,101 +1,163 @@
-import Image from "next/image";
+'use client'; 
+
+import {useState, useMemo, useEffect} from 'react';
+
+import Image from 'next/image';
+
+import Row from '@/components/Row';
+import Main from '@/components/Main';
+import Brand from '@/components/Brand';
+import Description from '@/components/Description';
+import Form from '@/components/Form';
+import Input from '@/components/Input';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import Code from '@/components/Code';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  const [isSubmited, setIsSubmited] = useState(false);
+  const [videoURL, setVideoURL] = useState('');
+  const [currentThumbnailURL, setCurrentThumbnailURL] = useState('');
+  const [currentTab, setCurrentTab] = useState(1);
+  const [langCode, setLangCode] = useState('php');
+  const [isCopied, setIsCopied] = useState(false);
+
+  const videoID = useMemo(() => {
+    const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const match = videoURL.match(regex);
+    return match?match[1]:'';
+  }, [videoURL]);
+
+  const thumbnails = useMemo(() => ({
+    MAX: `https://img.youtube.com/vi/${videoID}/maxresdefault.jpg`,
+    SD: `https://img.youtube.com/vi/${videoID}/sddefault.jpg`,
+    HQ: `https://img.youtube.com/vi/${videoID}/hqdefault.jpg`,
+    MQ: `https://img.youtube.com/vi/${videoID}/mqdefault.jpg`,
+    DF: `https://img.youtube.com/vi/${videoID}/default.jpg`,
+  }), [videoID]);
+
+  const handleButton = (event: React.MouseEvent) => {
+    event.preventDefault();
+    if (videoURL != '' && videoID != '') {
+      setIsSubmited(true);
+      handleTab(thumbnails.MAX, 1);
+    } else {
+      setIsSubmited(false);
+    }
+  }
+
+  const handleTab = (url:string, tab:number) => {
+    setCurrentThumbnailURL(url);
+    setCurrentTab(tab);
+  }
+
+  const handleCopy = (event: React.MouseEvent) => {
+    event.preventDefault();
+    navigator.clipboard.writeText(langCode === 'php' ? codeSnippets.php : codeSnippets.js);
+    setIsCopied(true);
+    const timer = setTimeout(function(){
+      setIsCopied(false);
+    }, 5000);
+  }
+
+  useEffect(() => {
+    setIsCopied(false);
+  }, [langCode]);
+
+  const codeSnippets = {
+    php: `function getYouTubeThumbnail($url, $size) {
+      preg_match('/(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S+[\?&]v=)|https?:\/\/(?:www\.)?youtu\.be\/)([a-zA-Z0-9_-]{11})/', $url, $matches);
+      $id = $matches[1];
+      $sizes = [
+          'mx' => 'maxresdefault.jpg',    // 1280x720
+          'sd' => 'sddefault.jpg',        // 640x480
+          'hq' => 'hqdefault.jpg',        // 480x360
+          'mq' => 'mqdefault.jpg',        // 320x180
+          'df' => 'default.jpg'           // 120x90
+      ];
+      $thumbnail = isset($sizes[$size]) ? "https://img.youtube.com/vi/{$id}/{$sizes[$size]}" : "https://img.youtube.com/vi/{$id}/default.jpg";
+      return $thumbnail;
+  }
+  
+  // How to use it
+  
+  echo getYouTubeThumbnail('https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'hq');
+  
+  // Returns: https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg`,
+    
+    js: `function getYouTubeThumbnail(url, size) {
+    const regex = /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^\/]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S+[\?&]v=)|https?:\/\/(?:www\.)?youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+    const matches = url.match(regex);
+    const id = matches ? matches[1] : null;
+    
+    const sizes = {
+        'mx': 'maxresdefault.jpg',    // 1280x720
+        'sd': 'sddefault.jpg',        // 640x480
+        'hq': 'hqdefault.jpg',        // 480x360
+        'mq': 'mqdefault.jpg',        // 320x180
+        'df': 'default.jpg'           // 120x90
+    };
+    
+    const thumbnail = sizes[size] ? \`https://img.youtube.com/vi/\${id}/\${sizes[size]}\` : \`https://img.youtube.com/vi/\${id}/default.jpg\`;
+    return thumbnail;
+  }
+  
+  // How to use it
+  
+  console.log(getYouTubeThumbnail('https://www.youtube.com/watch?v=dQw4w9WgXcQ', 'hq'));
+  
+  // Returns: https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg`
+  };
+
+  return (
+    <Main>
+        <Brand/>
+        <Description>Extract the thumbnail from any youtube video</Description>
+        <Form>
+          <Input value={videoURL} onChange={(e) => setVideoURL(e.target.value)} type="text" placeholder="Paste the link of the youtube video"></Input>
+          <Button variant="red" onClick={handleButton}>Get thumbnail</Button>
+        </Form>
+        {isSubmited ? (
+        <Card>
+          <Row className="overflow-auto">
+            <Button variant={currentTab === 1 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.MAX, 1)}>1280x720</Button>
+            <Button variant={currentTab === 2 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.SD, 2)}>640x480</Button>
+            <Button variant={currentTab === 3 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.HQ, 3)}>480x360</Button>
+            <Button variant={currentTab === 4 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.MQ, 4)}>320x180</Button>
+            <Button variant={currentTab === 5 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.DF, 5)}>120x90</Button>
+          </Row>
+          {currentThumbnailURL != '' ? (
+            <>
+              <Row>
+                  <img src={currentThumbnailURL} className="mx-auto bg-black w-[100%] h-[400px] mt-6 mb-3 object-contain" />
+              </Row>
+              <Row>
+                <Input disabled={true} value={currentThumbnailURL} className="bg-slate-200 text-center p-2 text-[14px] text-slate-600 mt-1 mb-2"/>
+              </Row>
+            </>
+          ) : ''}
+          <Row className="relative">
+            <form className="absolute top-5 right-3 flex flex-row items-stretch gap-3">
+              {isCopied ? (
+                <span className="text-green-200 text-[14px] flex flex-row items-center">Code copied to clipboard!</span>
+              ) : ''}
+              <button onClick={(e) => handleCopy(e)} className={`bg-dark border-solid border px-2 py-1 text-[14px] ${isCopied ? 'border-green-200 text-green-200' : 'border-white text-white'}`}>Copy code</button>
+              <select onChange={(e) => setLangCode(e.target.value)} className="bg-transparent border-solid border border-white text-white ps-2 py-1 text-[14px]">
+                <option value="php">PHP</option>
+                <option value="javascript">JS</option>
+              </select>
+            </form>
+          </Row>
+          <Row>
+            <Code code={langCode === 'php' ? codeSnippets.php : codeSnippets.js } language={langCode} />
+          </Row>
+        </Card>) : ''}
+        <Row>
+          <div className="text-center w-full text-[14px] text-slate-700 mt-3">
+            Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:text-red-600 transition-all">Gustavo Coimbra</a>
+          </div>
+        </Row>
+    </Main>
   );
 }
