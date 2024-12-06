@@ -59,7 +59,7 @@ export default function Home() {
       setIsCopied(false);
     }, 5000);
   }
-
+ 
   useEffect(() => {
     setIsCopied(false);
   }, [langCode]);
