@@ -111,7 +111,7 @@ export default function Home() {
   };
 
   return (
-    <Main>
+    <Main> 
         <Brand/>
         <Description>Extract the thumbnail from any youtube video</Description>
         <Form>
