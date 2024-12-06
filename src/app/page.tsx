@@ -2,7 +2,6 @@
 
 import {useState, useMemo, useEffect} from 'react';
 
-import Image from 'next/image';
 
 import Row from '@/components/Row';
 import Main from '@/components/Main';
