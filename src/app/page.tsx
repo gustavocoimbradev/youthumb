@@ -55,7 +55,7 @@ export default function Home() {
     event.preventDefault();
     navigator.clipboard.writeText(langCode === 'php' ? codeSnippets.php : codeSnippets.js);
     setIsCopied(true);
-    const timer = setTimeout(function(){
+    setTimeout(function(){
       setIsCopied(false);
     }, 5000);
   }
