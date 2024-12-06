@@ -5,7 +5,7 @@ type Props = {
   disabled?: boolean;
   value?: string,
   className?: string,
-  onChange?: (event: React.ChangeEvent<HTMLButtonElement>) => void;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function Input({ placeholder, type, disabled, value, onChange, className }: Props) {
