@@ -238,11 +238,11 @@ export default function Home() {
 
           <Card className="!p-0">
             <div className="flex flex-row items-center h-[84.36px]">
+              {/* <div className="bg-slate-800 w-full h-full"></div>
               <div className="bg-slate-800 w-full h-full"></div>
               <div className="bg-slate-800 w-full h-full"></div>
               <div className="bg-slate-800 w-full h-full"></div>
-              <div className="bg-slate-800 w-full h-full"></div>
-              <div className="bg-slate-800 w-full h-full"></div>
+              <div className="bg-slate-800 w-full h-full"></div> */}
             </div> 
           </Card>
 
