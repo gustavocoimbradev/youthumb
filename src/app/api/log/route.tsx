@@ -31,17 +31,22 @@ export async function GET() {
     try {
         const select = await prisma.log.findMany({
             select: {
-                complement: true,
+              complement: true,
             },
             orderBy: {
-                id: 'desc',
+              id: 'desc',
             },
             where: {
-                action: 'get_thumbnail'
+              action: 'get_thumbnail',
             },
-            take: 4,
         });
-        return NextResponse.json(select);  
+        const uniqueSelect = select.filter((value, index, self) => 
+            index === self.findIndex((t) => (
+              t.complement === value.complement
+            ))
+        );
+        const limitedSelect = uniqueSelect.slice(0, 4);
+        return NextResponse.json(limitedSelect);          
     } catch (error: unknown) {
         if (error instanceof Error) {
             console.error("Error retriaving log:", error.message);
