@@ -2,7 +2,6 @@
 
 import {useState, useMemo, useEffect} from 'react';
 
-
 import Row from '@/components/Row';
 import Main from '@/components/Main';
 import Brand from '@/components/Brand';
@@ -14,6 +13,16 @@ import Card from '@/components/Card';
 import Code from '@/components/Code';
 
 export default function Home() {
+
+  useEffect(() => {
+    const log = async () => {
+      const action = "access";
+      const response = await fetch(`/api/log?action=${action}`);
+      const data = await response.json();
+      return data;
+    };
+    log();
+  }, []);
 
   const [isSubmited, setIsSubmited] = useState(false);
   const [videoURL, setVideoURL] = useState('');
