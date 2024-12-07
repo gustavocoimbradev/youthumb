@@ -60,7 +60,7 @@ export default function Home() {
     }, 5000);
   }
 
-  const handleSimulateSearch = (ID:String) => {
+  const handleSimulateSearch = (ID:string) => {
     setVideoURL(`https://youtube.com/watch?v=${ID}`);
     setIsSubmited(true);
     setCurrentTab(1); 
