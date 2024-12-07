@@ -59,6 +59,13 @@ export default function Home() {
       setIsCopied(false);
     }, 5000);
   }
+
+  const handleSimulateSearch = (ID:String) => {
+    setVideoURL(`https://youtube.com/watch?v=${ID}`);
+    setIsSubmited(true);
+    setCurrentTab(1); 
+    setCurrentThumbnailURL(`https://img.youtube.com/vi/${ID}/maxresdefault.jpg`);
+  }
  
   useEffect(() => {
     setIsCopied(false);
@@ -182,51 +189,52 @@ export default function Home() {
           <Button variant="red" onClick={handleButton}>Get thumbnail</Button>
         </Form>
         {isSubmited ? (
-        <Card>
-          <Row className="overflow-auto">
-            <Button variant={currentTab === 1 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.MAX, 1)}>1280x720</Button>
-            <Button variant={currentTab === 2 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.SD, 2)}>640x480</Button>
-            <Button variant={currentTab === 3 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.HQ, 3)}>480x360</Button>
-            <Button variant={currentTab === 4 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.MQ, 4)}>320x180</Button>
-            <Button variant={currentTab === 5 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.DF, 5)}>120x90</Button>
-          </Row>
-          {currentThumbnailURL != '' ? (
-            <>
-              <Row>
-                  <img src={currentThumbnailURL} className="mx-auto bg-black w-[100%] h-[400px] mt-6 mb-3 object-contain" />
-              </Row>
-              <Row>
-                <Input disabled={true} value={currentThumbnailURL} className="bg-slate-200 text-center p-2 text-[14px] text-slate-600 mt-1 mb-2"/>
-              </Row>
-            </>
-          ) : ''}
-          <Row className="relative">
-            <form className="absolute top-5 right-3 flex flex-row items-stretch gap-3">
-              {isCopied ? (
-                <span className="text-green-200 text-[14px] flex flex-row items-center">Code copied to clipboard!</span>
-              ) : ''}
-              <button onClick={(e) => handleCopy(e)} className={`bg-dark border-solid border px-2 py-1 text-[14px] ${isCopied ? 'border-green-200 text-green-200' : 'border-white text-white'}`}>Copy code</button>
-              <select onChange={(e) => setLangCode(e.target.value)} className="bg-transparent border-solid border border-white text-white ps-2 py-1 text-[14px]">
-                <option value="php">PHP</option>
-                <option value="javascript">JS</option>
-              </select>
-            </form>
-          </Row>
-          <Row>
-            <Code code={langCode === 'php' ? codeSnippets.php : codeSnippets.js } language={langCode} />
-          </Row>
-        </Card>) : ''}
-        {latestThumbnails.length > 0 ? (
+          <Card>
+            <Row className="overflow-auto">
+              <Button variant={currentTab === 1 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.MAX, 1)}>1280x720</Button>
+              <Button variant={currentTab === 2 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.SD, 2)}>640x480</Button>
+              <Button variant={currentTab === 3 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.HQ, 3)}>480x360</Button>
+              <Button variant={currentTab === 4 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.MQ, 4)}>320x180</Button>
+              <Button variant={currentTab === 5 ? 'slate' : 'light'} grow={true} onClick={() => handleTab(thumbnails.DF, 5)}>120x90</Button>
+            </Row>
+            {currentThumbnailURL != '' ? (
+              <>
+                <Row>
+                    <img src={currentThumbnailURL} className="mx-auto bg-black w-[100%] h-[400px] mt-6 mb-3 object-contain" />
+                </Row>
+                <Row>
+                  <Input disabled={true} value={currentThumbnailURL} className="bg-slate-200 text-center p-2 text-[14px] text-slate-600 mt-1 mb-2"/>
+                </Row>
+              </>
+            ) : ''}
+            <Row className="relative">
+              <form className="absolute top-5 right-3 flex flex-row items-stretch gap-3">
+                {isCopied ? (
+                  <span className="text-green-200 text-[14px] flex flex-row items-center">Code copied to clipboard!</span>
+                ) : ''}
+                <button onClick={(e) => handleCopy(e)} className={`bg-dark border-solid border px-2 py-1 text-[14px] ${isCopied ? 'border-green-200 text-green-200' : 'border-white text-white'}`}>Copy code</button>
+                <select onChange={(e) => setLangCode(e.target.value)} className="bg-transparent border-solid border border-white text-white ps-2 py-1 text-[14px]">
+                  <option value="php">PHP</option>
+                  <option value="javascript">JS</option>
+                </select>
+              </form>
+            </Row>
+            <Row>
+              <Code code={langCode === 'php' ? codeSnippets.php : codeSnippets.js } language={langCode} />
+            </Row>
+          </Card>)
+        : ''}
+        {latestThumbnails.length > 0 && !isSubmited ? (
           <Card className="!p-0">
             <div className="flex flex-row items-center">
               {latestThumbnails.map((row, i) => (
-                <a target="_blank" className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} href={`https://www.youtube.com/watch?v=${row['complement']}`} key={i}>
+                <div onClick={(e) => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} key={i}>
                   <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
-                </a>
+                </div>
               ))}
             </div> 
           </Card>
-        ) : (
+        ) : (!isSubmited ? (
 
           <Card className="!p-0">
             <div className="flex flex-row items-center h-[84.36px]">
@@ -238,7 +246,7 @@ export default function Home() {
             </div> 
           </Card>
 
-        )}
+        ) : '')}
         <Row>
           <div className="text-center w-full text-[14px] text-slate-700 mt-3">
             Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:text-red-600 transition-all">Gustavo Coimbra</a>
@@ -246,4 +254,5 @@ export default function Home() {
         </Row>
     </Main>
   );
+  
 }
