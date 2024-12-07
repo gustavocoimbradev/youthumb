@@ -220,7 +220,7 @@ export default function Home() {
           <Card className="p-0">
             <div className="flex flex-row items-center">
               {latestThumbnails.map((row, i) => (
-                <a target="_blank" className="cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%]" href={`https://www.youtube.com/watch?v=${row['complement']}`} key={i}>
+                <a target="_blank" className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} href={`https://www.youtube.com/watch?v=${row['complement']}`} key={i}>
                   <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
                 </a>
               ))}
