@@ -113,7 +113,7 @@ export default function Home() {
   useEffect(() => {
     const log = async () => {
       const action = `access`;
-      const complement = ``;
+      const complement = `${window.innerWidth}x${window.innerHeight}`;
       const response = await fetch(`/api/log?action=${action}&complement=${complement}`);
       const data = await response.json();
       return data;
