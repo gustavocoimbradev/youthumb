@@ -20,6 +20,7 @@ export default function Home() {
   const [currentTab, setCurrentTab] = useState(1);
   const [langCode, setLangCode] = useState('php');
   const [isCopied, setIsCopied] = useState(false);
+  const [latestThumbnails, setLatestThumbnails] = useState([]);
 
   const videoID = useMemo(() => {
     const regex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
@@ -114,7 +115,13 @@ export default function Home() {
     const log = async () => {
       const action = `access`;
       const complement = `${window.innerWidth}x${window.innerHeight}`;
-      const response = await fetch(`/api/log?action=${action}&complement=${complement}`);
+      const response = await fetch(`/api/log`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action, complement }),
+      });
       const data = await response.json();
       return data;
     };
@@ -122,13 +129,26 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (videoURL != '') {
+    if (isSubmited) {
       const log = async () => {
         const action = `get_thumbnail`;
-        const complement = `${videoURL}`;
-        const response = await fetch(`/api/log?action=${action}&complement=${complement}`);
+        const complement = `${videoID}`;
+        const response = await fetch(`/api/log`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ action, complement }),
+        });
         const data = await response.json();
         return data;
+      }; 
+      log();
+    } else {
+      const log = async () => {
+        const response = await fetch(`/api/log`);
+        const data = await response.json();
+        setLatestThumbnails(data);
       }; 
       log();
     }
@@ -139,7 +159,13 @@ export default function Home() {
       const log = async () => {
         const action = `copy_snippet`;
         const complement = `${langCode}`;
-        const response = await fetch(`/api/log?action=${action}&complement=${complement}`);
+        const response = await fetch(`/api/log`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ action, complement }),
+        });
         const data = await response.json();
         return data;
       }; 
@@ -190,6 +216,17 @@ export default function Home() {
             <Code code={langCode === 'php' ? codeSnippets.php : codeSnippets.js } language={langCode} />
           </Row>
         </Card>) : ''}
+        {latestThumbnails.length > 0 ? (
+          <Card className="p-0">
+            <div className="flex flex-row items-center">
+              {latestThumbnails.map((row, i) => (
+                <a className="cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%]" href={`https://www.youtube.com/watch?v=${row['complement']}`} key={i}>
+                  <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
+                </a>
+              ))}
+            </div>
+          </Card>
+        ) : ''}
         <Row>
           <div className="text-center w-full text-[14px] text-slate-700 mt-3">
             Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:text-red-600 transition-all">Gustavo Coimbra</a>

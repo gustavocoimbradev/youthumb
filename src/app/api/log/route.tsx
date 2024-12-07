@@ -3,13 +3,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function GET(req: Request) {
+export async function POST(req: Request) {
     try {
-        const url = new URL(req.url);
-        const action = `${url.searchParams.get('action')}`;
-        const complement = `${url.searchParams.get('complement')}`;
+        const { action, complement } = await req.json();
         const forwardedFor = req.headers.get('x-forwarded-for');
-        const ip = forwardedFor ? forwardedFor.split(',')[0] : 'IP não encontrado';
+        const ip = forwardedFor ? forwardedFor.split(',')[0] : 'Unknown';
         const insert = await prisma.log.create({
             data: {
                 action: action,
@@ -28,3 +26,31 @@ export async function GET(req: Request) {
         }
     }
 }
+
+export async function GET(req: Request) {
+    try {
+        const select = await prisma.log.findMany({
+            select: {
+                complement: true,
+            },
+            orderBy: {
+                id: 'desc',
+            },
+            where: {
+                action: 'get_thumbnail'
+            },
+            take: 4,
+        });
+        return NextResponse.json(select);  
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            console.error("Error retriaving log:", error.message);
+            return NextResponse.json({ error: error.message }, { status: 500 });
+        } else {
+            console.error("Unknown error:", error);
+            return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+        }
+    }
+}
+
+
