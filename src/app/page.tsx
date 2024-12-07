@@ -14,16 +14,6 @@ import Code from '@/components/Code';
 
 export default function Home() {
 
-  useEffect(() => {
-    const log = async () => {
-      const action = "access";
-      const response = await fetch(`/api/log?action=${action}`);
-      const data = await response.json();
-      return data;
-    };
-    log();
-  }, []);
-
   const [isSubmited, setIsSubmited] = useState(false);
   const [videoURL, setVideoURL] = useState('');
   const [currentThumbnailURL, setCurrentThumbnailURL] = useState('');
@@ -117,6 +107,28 @@ export default function Home() {
   
   // Returns: https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg`
   };
+
+  // Logs
+
+  useEffect(() => {
+    const log = async () => {
+      const action = `access`;
+      const response = await fetch(`/api/log?action=${action}`);
+      const data = await response.json();
+      return data;
+    };
+    log();
+  }, []);
+
+  useEffect(() => {
+    const log = async () => {
+      const action = `get thumbnail => ${videoURL}`;
+      const response = await fetch(`/api/log?action=${action}`);
+      const data = await response.json();
+      return data;
+    }; 
+    log();
+  }, [isSubmited]);
 
   return (
     <Main> 
