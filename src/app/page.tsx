@@ -134,6 +134,19 @@ export default function Home() {
     }
   }, [isSubmited]);
 
+  useEffect(() => {
+    if (isCopied) {
+      const log = async () => {
+        const action = `copy_snippet`;
+        const complement = `${langCode}`;
+        const response = await fetch(`/api/log?action=${action}&complement=${complement}`);
+        const data = await response.json();
+        return data;
+      }; 
+      log();
+    }
+  }, [isCopied]);
+
   return (
     <Main> 
         <Brand/>
