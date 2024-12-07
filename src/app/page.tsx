@@ -121,13 +121,15 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const log = async () => {
-      const action = `get thumbnail => ${videoURL}`;
-      const response = await fetch(`/api/log?action=${action}`);
-      const data = await response.json();
-      return data;
-    }; 
-    log();
+    if (videoURL != '') {
+      const log = async () => {
+        const action = `get thumbnail => ${videoURL}`;
+        const response = await fetch(`/api/log?action=${action}`);
+        const data = await response.json();
+        return data;
+      }; 
+      log();
+    }
   }, [isSubmited]);
 
   return (
