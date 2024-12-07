@@ -226,7 +226,19 @@ export default function Home() {
               ))}
             </div> 
           </Card>
-        ) : ''}
+        ) : (
+
+          <Card className="!p-0">
+            <div className="flex flex-row items-center h-[84.36px]">
+              <div className="bg-slate-800 w-full h-full"></div>
+              <div className="bg-slate-800 w-full h-full"></div>
+              <div className="bg-slate-800 w-full h-full"></div>
+              <div className="bg-slate-800 w-full h-full"></div>
+              <div className="bg-slate-800 w-full h-full"></div>
+            </div> 
+          </Card>
+
+        )}
         <Row>
           <div className="text-center w-full text-[14px] text-slate-700 mt-3">
             Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:text-red-600 transition-all">Gustavo Coimbra</a>
