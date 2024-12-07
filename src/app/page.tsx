@@ -228,7 +228,7 @@ export default function Home() {
           <Card className="!p-0">
             <div className="flex flex-row items-center">
               {latestThumbnails.map((row, i) => (
-                <div onClick={(e) => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} key={i}>
+                <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} key={i}>
                   <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
                 </div>
               ))}
