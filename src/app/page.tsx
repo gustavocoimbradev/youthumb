@@ -113,7 +113,8 @@ export default function Home() {
   useEffect(() => {
     const log = async () => {
       const action = `access`;
-      const response = await fetch(`/api/log?action=${action}`);
+      const complement = ``;
+      const response = await fetch(`/api/log?action=${action}&complement=${complement}`);
       const data = await response.json();
       return data;
     };
@@ -123,8 +124,9 @@ export default function Home() {
   useEffect(() => {
     if (videoURL != '') {
       const log = async () => {
-        const action = `get thumbnail => ${videoURL}`;
-        const response = await fetch(`/api/log?action=${action}`);
+        const action = `get_thumbnail`;
+        const complement = `${videoURL}`;
+        const response = await fetch(`/api/log?action=${action}&complement=${complement}`);
         const data = await response.json();
         return data;
       }; 

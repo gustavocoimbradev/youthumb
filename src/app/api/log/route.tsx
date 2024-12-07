@@ -7,11 +7,13 @@ export async function GET(req: Request) {
     try {
         const url = new URL(req.url);
         const action = `${url.searchParams.get('action')}`;
+        const complement = `${url.searchParams.get('complement')}`;
         const forwardedFor = req.headers.get('x-forwarded-for');
         const ip = forwardedFor ? forwardedFor.split(',')[0] : 'IP não encontrado';
         const insert = await prisma.log.create({
             data: {
                 action: action,
+                complement: complement,
                 ip: ip,
             }
         });
