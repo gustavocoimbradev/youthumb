@@ -224,7 +224,7 @@ export default function Home() {
                   <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
                 </a>
               ))}
-            </div>
+            </div> 
           </Card>
         ) : ''}
         <Row>
