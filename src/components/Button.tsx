@@ -18,7 +18,7 @@ export default function Button({ children, variant, grow, onClick }: Props) {
   const growClass = typeof grow === 'undefined' ? '' : 'flex-grow';
 
   return (
-    <button onClick={onClick} className={`${variantClasses} ${growClass} transition-all py-4 px-4 text-nowrap`}>
+    <button onClick={onClick} className={`${variantClasses} ${growClass} font-medium transition-all py-4 px-4 text-nowrap`}>
       {children}
     </button>
   );

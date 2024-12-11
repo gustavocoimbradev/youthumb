@@ -185,7 +185,7 @@ export default function Home() {
         <Brand/>
         <Description>Extract the thumbnail from any youtube video</Description>
         <Form>
-          <Input value={videoURL} onChange={(e) => setVideoURL(e.target.value)} type="text" placeholder="Paste the link of the youtube video"></Input>
+          <Input value={videoURL} onChange={(e) => setVideoURL(e.target.value)} type="text" placeholder="Paste the URL"></Input>
           <Button variant="red" onClick={handleButton}>Get thumbnail</Button>
         </Form>
         {isSubmited ? (
