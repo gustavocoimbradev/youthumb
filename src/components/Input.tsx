@@ -20,7 +20,7 @@ export default function Input({ placeholder, type, disabled, value, onChange, cl
       disabled={disabledValue}
       type={typeValue}
       placeholder={placeholderValue}
-      className={`p-4 w-full border-none outline-none ${className}`}
+      className={`p-4 w-full border-none outline-none bg-slate-700 text-white ${className}`}
     />
   );
 

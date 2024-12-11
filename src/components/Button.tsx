@@ -11,7 +11,7 @@ export default function Button({ children, variant, grow, onClick }: Props) {
     'red': 'bg-red-600 hover:bg-red-700 text-white',
     'blue': 'bg-blue-600 hover:bg-blue-700 text-white',
     'green': 'bg-green-600 hover:bg-green-700 text-white',
-    'slate': 'bg-slate-600 hover:bg-slate-700 text-white',
+    'slate': 'bg-slate-900 hover:bg-slate-950 text-slate-300',
     'light': 'bg-slate-200 hover:bg-slate-300 text-slate-600',
   }[variant] || 'bg-gray-600 hover:bg-gray-700 text-white';
 

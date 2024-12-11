@@ -186,7 +186,7 @@ export default function Home() {
         <Description>Extract the thumbnail from any youtube video</Description>
         <Form>
           <Input value={videoURL} onChange={(e) => setVideoURL(e.target.value)} type="text" placeholder="Paste the URL"></Input>
-          <Button variant="red" onClick={handleButton}>Get thumbnail</Button>
+          <Button variant="slate" onClick={handleButton}>Get thumbnail</Button>
         </Form>
         {isSubmited ? (
           <Card>
@@ -224,7 +224,6 @@ export default function Home() {
             </Row>
           </Card>)
         : ''}
-
         {!isSubmited ? (
           <Card className="!p-0">
             <div className="flex flex-row items-center h-[80px] relative">
@@ -235,7 +234,7 @@ export default function Home() {
               {latestThumbnails.length > 0 ? (
                   <div className="absolute flex flex-row items-center animate-fade-in">
                     {latestThumbnails.map((row, i) => (
-                      <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-50 hover:saturate-100 ${i>1?'hidden md:block':''}`} key={i}>
+                      <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[20%] hover:saturate-100 ${i>1?'hidden md:block':''}`} key={i}>
                         <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
                       </div>
                     ))}
@@ -244,7 +243,6 @@ export default function Home() {
             </div> 
           </Card>
         ) : ''}
-
         <Row>
           <div className="text-center w-full text-[14px] text-slate-700 mt-3">
             Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:text-red-600 transition-all">Gustavo Coimbra</a>
