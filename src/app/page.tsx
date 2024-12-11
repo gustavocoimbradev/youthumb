@@ -224,29 +224,25 @@ export default function Home() {
             </Row>
           </Card>)
         : ''}
-        {latestThumbnails.length > 0 && !isSubmited ? (
-          <Card className="!p-0">
-            <div className="flex flex-row items-center">
-              {latestThumbnails.map((row, i) => (
-                <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} key={i}>
-                  <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
+
+        <Card className="!p-0">
+          <div className="flex flex-row items-center h-[80px] relative">
+            <div className="animate-color-change-1 w-full h-full"></div>
+            <div className="animate-color-change-2 w-full h-full"></div>
+            <div className="animate-color-change-1 w-full h-full"></div>
+            <div className="animate-color-change-2 w-full h-full"></div> 
+            {latestThumbnails.length > 0 && !isSubmited ? (
+                <div className="absolute flex flex-row items-center animate-fade-in">
+                  {latestThumbnails.map((row, i) => (
+                    <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} key={i}>
+                      <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div> 
-          </Card>
-        ) : (!isSubmited ? (
+            ) : ''}
+          </div> 
+        </Card>
 
-          <Card className="!p-0">
-            <div className="flex flex-row items-center h-[84.36px]">
-              {/* <div className="bg-slate-800 w-full h-full"></div>
-              <div className="bg-slate-800 w-full h-full"></div>
-              <div className="bg-slate-800 w-full h-full"></div>
-              <div className="bg-slate-800 w-full h-full"></div>
-              <div className="bg-slate-800 w-full h-full"></div> */}
-            </div> 
-          </Card>
-
-        ) : '')}
         <Row>
           <div className="text-center w-full text-[14px] text-slate-700 mt-3">
             Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:text-red-600 transition-all">Gustavo Coimbra</a>

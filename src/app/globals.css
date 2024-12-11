@@ -2,4 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes colorChange1 {
+  0%, 100% {
+    background-color: rgba(30, 41, 59, 0.05); 
+  }
+  50% {
+    background-color: rgba(30, 41, 59, 0.1);
+  }
+}
+  
+.animate-color-change-1 {
+    animation: colorChange1 2s infinite;
+}
+  
+@keyframes colorChange2 {
+  0%, 100% {
+    background-color: rgba(30, 41, 59, 0.1);
+  }
+  50% {
+    background-color: rgba(30, 41, 59, 0.05); 
+  }
+}
 
+.animate-color-change-2 {
+  animation: colorChange2 2s infinite;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn .6s forwards ease-in-out;
+}
