@@ -244,8 +244,8 @@ export default function Home() {
           </Card>
         ) : ''}
         <Row>
-          <div className="text-center w-full text-[14px] text-slate-700 mt-3">
-            Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:text-red-600 transition-all">Gustavo Coimbra</a>
+          <div className="text-center w-full text-[14px] text-slate-300 mt-3">
+            Developed by <a href="https://github.com/gustavocoimbradev" target="_blank" className="font-medium hover:underline transition-all">Gustavo Coimbra</a>
           </div>
         </Row>
     </Main>

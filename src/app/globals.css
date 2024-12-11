@@ -4,10 +4,10 @@
 
 @keyframes colorChange1 {
   0%, 100% {
-    background-color: rgba(30, 41, 59, 0.05); 
+    background-color: rgba(30, 41, 59, 0.80); 
   }
   50% {
-    background-color: rgba(30, 41, 59, 0.1);
+    background-color: rgba(30, 41, 59, 0.60);
   }
 }
   
@@ -17,10 +17,10 @@
   
 @keyframes colorChange2 {
   0%, 100% {
-    background-color: rgba(30, 41, 59, 0.1);
+    background-color: rgba(30, 41, 59, 0.60);
   }
   50% {
-    background-color: rgba(30, 41, 59, 0.05); 
+    background-color: rgba(30, 41, 59, 0.80); 
   }
 }
 
