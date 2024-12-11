@@ -10,7 +10,7 @@ const Code = ({ code, language }: { code: string; language: string }) => {
   }, [code]);
 
   return ( 
-    <pre className={`language-${language} w-full max-w-full !pt-[70px]`}>
+    <pre className={`language-${language} w-full max-w-full !pt-[70px] !bg-slate-800`}>
       <code className={`language-${language} !whitespace-break-spaces`}>{code}</code>
     </pre>
   );
