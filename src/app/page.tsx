@@ -203,7 +203,7 @@ export default function Home() {
                     <img src={currentThumbnailURL} className="mx-auto bg-black w-[100%] h-[400px] mt-6 mb-3 object-contain" />
                 </Row>
                 <Row>
-                  <Input disabled={true} value={currentThumbnailURL} className="text-center p-2 text-[14px] text-slate-300 mt-1 mb-2"/>
+                  <Input disabled={true} value={currentThumbnailURL} className="text-center p-2 text-[14px] bg-slate-800 text-slate-300 mt-1 mb-2"/>
                 </Row>
               </>
             ) : ''}
