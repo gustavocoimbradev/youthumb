@@ -234,7 +234,7 @@ export default function Home() {
             {latestThumbnails.length > 0 && !isSubmited ? (
                 <div className="absolute flex flex-row items-center animate-fade-in">
                   {latestThumbnails.map((row, i) => (
-                    <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[80%] hover:saturate-[110%] ${i>1?'hidden md:block':''}`} key={i}>
+                    <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-50 hover:saturate-100 ${i>1?'hidden md:block':''}`} key={i}>
                       <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
                     </div>
                   ))}
