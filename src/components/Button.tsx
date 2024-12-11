@@ -12,7 +12,7 @@ export default function Button({ children, variant, grow, onClick }: Props) {
     'blue': 'bg-blue-600 hover:bg-blue-700 text-white',
     'green': 'bg-green-600 hover:bg-green-700 text-white',
     'slate': 'bg-slate-900 hover:bg-slate-950 text-slate-300',
-    'light': 'bg-slate-700 hover:bg-slate-800 text-slate-300',
+    'light': 'bg-slate-800 hover:bg-slate-800 text-slate-300',
   }[variant] || 'bg-gray-600 hover:bg-gray-700 text-white';
 
   const growClass = typeof grow === 'undefined' ? '' : 'flex-grow';
