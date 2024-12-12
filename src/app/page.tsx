@@ -229,10 +229,10 @@ export default function Home() {
             <div className="flex flex-row items-center h-[120px] relative">
               <div className="animate-color-change-1 w-full h-full"></div>
               <div className="animate-color-change-2 w-full h-full"></div>
-              <div className="animate-color-change-1 w-full h-full"></div>
-              <div className="animate-color-change-2 w-full h-full"></div> 
+              <div className="animate-color-change-1 w-full h-full hidden md:block"></div>
+              <div className="animate-color-change-2 w-full h-full hidden md:block"></div> 
               {latestThumbnails.length > 0 ? (
-                  <div className="absolute flex flex-row items-center animate-fade-in">
+                  <div className="absolute flex flex-row items-center justify-between animate-fade-in">
                     {latestThumbnails.map((row, i) => (
                       <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 h-full flex saturate-[20%] hover:saturate-100 ${i>1?'hidden md:block':''}`} key={i}>
                         <img className="h-[120px] object-cover flex" src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
