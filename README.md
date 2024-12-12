@@ -11,7 +11,7 @@
 
 ![Captura de tela 2024-12-11 - 21 11 07](https://github.com/user-attachments/assets/76de50de-6b18-4e97-a08a-fa074683ccad)
 
-![localhost_3000-Youthumb(1)](https://github.com/user-attachments/assets/04bac30a-1444-456a-accf-fd38a4f39849)
+![localhost_3000-Youthumb(3)](https://github.com/user-attachments/assets/d244b9ec-9435-48d4-a4c3-5256dacdea58)
 
 <a href="https://you-thumb.vercel.app">
   <img src="https://img.shields.io/badge/%F0%9F%93%8E-Try it for free-blue" alt="🔗 Try it for free" width="150" height="30">
