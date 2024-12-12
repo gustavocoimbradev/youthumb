@@ -9,7 +9,7 @@
    Extract the thumbnail from any youtube video
 </p>
 
-![Captura de tela 2024-12-06 - 11 23 08](https://github.com/user-attachments/assets/a5f7a130-89e1-4274-96a6-4b963ec9303b)
+![Captura de tela 2024-12-11 - 21 11 07](https://github.com/user-attachments/assets/76de50de-6b18-4e97-a08a-fa074683ccad)
 
 <a href="https://you-thumb.vercel.app">
   <img src="https://img.shields.io/badge/%F0%9F%93%8E-Try it for free-blue" alt="🔗 Try it for free" width="150" height="30">
