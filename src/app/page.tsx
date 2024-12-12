@@ -200,7 +200,7 @@ export default function Home() {
             {currentThumbnailURL != '' ? (
               <>
                 <Row>
-                    <img src={currentThumbnailURL} className="mx-auto bg-slate-800 w-[100%] h-[400px] mt-6 mb-3 object-none" />
+                    <img src={currentThumbnailURL} className="mx-auto bg-slate-800 w-[100%] h-[400px] mt-6 mb-3 object-contain" />
                 </Row>
                 <Row>
                   <Input disabled={true} value={currentThumbnailURL} className="text-center p-2 text-[14px] bg-slate-800 text-slate-300 mt-1 mb-2"/>
@@ -226,16 +226,16 @@ export default function Home() {
         : ''}
         {!isSubmited ? (
           <Card className="!p-0">
-            <div className="flex flex-row items-center h-[80px] relative">
+            <div className="flex flex-row items-center h-[120px] relative">
               <div className="animate-color-change-1 w-full h-full"></div>
               <div className="animate-color-change-2 w-full h-full"></div>
               <div className="animate-color-change-1 w-full h-full"></div>
               <div className="animate-color-change-2 w-full h-full"></div> 
               {latestThumbnails.length > 0 ? (
-                  <div className="absolute flex flex-row items-center animate-fade-in">
+                  <div className="absolute flex flex-row animate-fade-in h-full">
                     {latestThumbnails.map((row, i) => (
-                      <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 saturate-[20%] hover:saturate-100 ${i>1?'hidden md:block':''}`} key={i}>
-                        <img src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
+                      <div onClick={() => handleSimulateSearch(`${row['complement']}`)} className={`cursor-pointer transition-all duration-300 h-full flex saturate-[20%] hover:saturate-100 ${i>1?'hidden md:block':''}`} key={i}>
+                        <img className="h-full object-cover flex" src={`https://img.youtube.com/vi/${row['complement']}/mqdefault.jpg`} />
                       </div>
                     ))}
                   </div>
