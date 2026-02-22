@@ -1,18 +1,65 @@
-<h2>Youthumb</h2>
+CONTEUDO_DO_README: |
+  # 🖼️ Youthumb
 
-<p>
-  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white"/>
-</p>
+  O **Youthumb** é um utilitário web minimalista desenvolvido para extrair thumbnails de vídeos do YouTube de forma instantânea através da URL. O foco deste projeto foi explorar a performance do **Next.js** e a criação de uma interface limpa e intuitiva.
 
-<p>
-   Extract the thumbnail from any youtube video
-</p>
+  ---
 
-![Captura de tela 2024-12-11 - 21 11 07](https://github.com/user-attachments/assets/76de50de-6b18-4e97-a08a-fa074683ccad)
+  ## 🚀 Demonstração
 
-![localhost_3000-Youthumb(3)](https://github.com/user-attachments/assets/d244b9ec-9435-48d4-a4c3-5256dacdea58)
+  Você pode testar a ferramenta online:
+  👉 [https://you-thumb.vercel.app/](https://you-thumb.vercel.app/)
 
-<a href="https://you-thumb.vercel.app">
-  <img src="https://img.shields.io/badge/%F0%9F%93%8E-Try it for free-blue" alt="🔗 Try it for free" width="150" height="30">
-</a>
+  ---
+
+  ## 💻 Como Rodar Localmente
+
+  Por ser um projeto focado em Frontend e sem dependência de banco de dados, o setup é extremamente simples.
+
+  ### 📋 Pré-requisitos
+  - **Node.js**
+  - **NPM ou Yarn**
+
+  ### 🛠️ Passo a Passo
+
+  1. **Clone o repositório:**
+     ```bash
+     git clone [https://github.com/gustavocoimbradev/youthumb.git](https://github.com/gustavocoimbradev/youthumb.git)
+     cd youthumb
+     ```
+
+  2. **Instale as dependências:**
+     ```bash
+     npm install
+     ```
+
+  3. **Inicie o servidor de desenvolvimento:**
+     ```bash
+     npm run dev
+     ```
+
+  4. **Acesse:** `http://localhost:3000`
+
+  ---
+
+  ## 🛠️ Tecnologias Utilizadas
+
+  - **Framework:** [Next.js](https://nextjs.org/)
+  - **Biblioteca:** [React](https://reactjs.org/)
+  - **Estilização:** [Tailwind CSS](https://tailwindcss.com)
+  - **Deployment:** [Vercel](https://vercel.com)
+
+  ---
+
+  ## 💡 Motivação Técnica
+
+  Este projeto foi construído como um estudo de caso para:
+  - Manipulação de strings e Regex para extração de IDs de vídeo do YouTube.
+  - Renderização otimizada de imagens com componentes nativos do Next.js.
+  - UI responsiva focada em ferramentas de utilidade única.
+
+  ---
+
+  ## 📝 Licença
+
+  Este projeto é um software de código aberto (open-source) licenciado sob a [MIT license](https://opensource.org/licenses/MIT).
