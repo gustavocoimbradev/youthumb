@@ -1,4 +1,3 @@
-CONTEUDO_DO_README: |
   # 🖼️ Youthumb
 
   O **Youthumb** é um utilitário web minimalista desenvolvido para extrair thumbnails de vídeos do YouTube de forma instantânea através da URL. O foco deste projeto foi explorar a performance do **Next.js** e a criação de uma interface limpa e intuitiva.
