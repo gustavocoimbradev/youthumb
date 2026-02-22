@@ -11,7 +11,7 @@
 
   ---
 
-  ## 💻 Como Rodar Localmente
+  ## 💻 Como rodar localmente
 
   Por ser um projeto focado em Frontend e sem dependência de banco de dados, o setup é extremamente simples.
 
@@ -19,7 +19,7 @@
   - **Node.js**
   - **NPM ou Yarn**
 
-  ### 🛠️ Passo a Passo
+  ### 🛠️ Passo a passo
 
   1. **Clone o repositório:**
      ```bash
@@ -41,7 +41,7 @@
 
   ---
 
-  ## 🛠️ Tecnologias Utilizadas
+  ## 🛠️ Tecnologias utilizadas
 
   - **Framework:** [Next.js](https://nextjs.org/)
   - **Biblioteca:** [React](https://reactjs.org/)
@@ -50,7 +50,7 @@
 
   ---
 
-  ## 💡 Motivação Técnica
+  ## 💡 Motivação técnica
 
   Este projeto foi construído como um estudo de caso para:
   - Manipulação de strings e Regex para extração de IDs de vídeo do YouTube.
